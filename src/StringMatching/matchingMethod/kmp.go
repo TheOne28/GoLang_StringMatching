@@ -2,16 +2,20 @@ package matchingMethod
 
 func KMPMatch(text, pattern string) int {
 
-	var tLength int = len(text)
-	var pLength int = len(pattern)
+	runeText := []rune(text)
+	runePattern := []rune(pattern)
 
-	var fail = computeFail(pattern, pLength)
+	var tLength int = len(runeText)
+	var pLength int = len(runePattern)
 
-	var j int = 0
+	var fail = computeFail(runePattern, pLength)
+
 	var i int = 0
+	var j int = 0
 
 	for i < tLength {
-		if pattern[j] == text[i] {
+		if string(runePattern[j]) == string(runeText[i]) {
+
 			if j == pLength-1 {
 				return i - pLength + 1
 			}
@@ -26,7 +30,7 @@ func KMPMatch(text, pattern string) int {
 	return -1
 }
 
-func computeFail(pattern string, length int) []int {
+func computeFail(pattern []rune, length int) []int {
 	var fail = make([]int, length)
 	fail[0] = 0
 
@@ -34,7 +38,7 @@ func computeFail(pattern string, length int) []int {
 	var i int = 1
 
 	for i < length {
-		if pattern[j] == pattern[i] {
+		if string(pattern[j]) == string(pattern[i]) {
 			fail[i] = j + 1
 			i++
 			j++
@@ -45,5 +49,10 @@ func computeFail(pattern string, length int) []int {
 			i++
 		}
 	}
+
+	for i := 0; i < length; i++ {
+		print(fail[i])
+	}
+
 	return fail
 }
