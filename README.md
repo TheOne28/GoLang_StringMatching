@@ -3,7 +3,6 @@
 Vincent Prasetiya Atmadja  
 13520099
 
-
 ## Table of Contents
 
 - [Deskripsi Program](#deskripsi-program)
