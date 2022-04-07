@@ -50,9 +50,5 @@ func computeFail(pattern []rune, length int) []int {
 		}
 	}
 
-	for i := 0; i < length; i++ {
-		print(fail[i])
-	}
-
 	return fail
 }

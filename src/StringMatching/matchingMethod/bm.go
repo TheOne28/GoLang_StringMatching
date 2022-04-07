@@ -2,10 +2,14 @@ package matchingMethod
 
 // BM Main function
 func BMMatch(text, pattern string) int {
-	var tLength int = len(text)
-	var pLength int = len(pattern)
 
-	var last = buildLast(pattern, pLength)
+	runeText := []rune(text)
+	runePattern := []rune(pattern)
+
+	var tLength int = len(runeText)
+	var pLength int = len(runePattern)
+
+	var last = buildLast(runePattern, pLength)
 
 	var i int = pLength - 1
 
@@ -32,7 +36,7 @@ func BMMatch(text, pattern string) int {
 	return -1
 }
 
-func buildLast(pattern string, length int) []int {
+func buildLast(pattern []rune, length int) []int {
 	var last = make([]int, 128)
 
 	for i := 0; i < 128; i++ {
